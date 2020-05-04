@@ -1,0 +1,554 @@
+#:kivy 1.9.1
+#:set bg_color (.93,.93,.93,1)
+#:set typo_color (0,0,0,1)
+#:set menubutton_color (0.44,0.53,0.73,1)
+#:import FadeTransition kivy.uix.screenmanager
+
+<Label>:
+    font_name: 'Xolonium'
+    color: typo_color
+    markup: True
+    font_size: self.height*0.5
+    text_size: self.size
+    
+<CheckBox>:
+    canvas:
+        Color:
+            rgba: (0,0,0,1)
+        Rectangle:
+            source: self._radio_image if self.group else self._checkbox_image
+            size: sp(32), sp(32)
+            pos: int(self.center_x - sp(16)), int(self.center_y - sp(16))
+            
+<Manager>:
+    id: screen_manager
+    screen_main: screen_main
+    screen_menu: screen_menu
+    size:root.size
+    pos:0,0
+    MenuScreen:
+        id: screen_menu
+        name: 'screenMenu'
+        manager: screen_manager
+        size:root.size
+        pos:0,0
+    MainScreen:
+        id: screen_main
+        name: 'screenMain'
+        manager: screen_manager
+        size:root.size
+        pos:0,0
+        
+<MainScreen>: 
+    BoxLayout: 
+        orientation:'vertical'
+        padding:0
+        #Top Bar
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Button:
+                id: menu_button
+                font_name: 'IconFont'
+                color: menubutton_color
+                font_size: 30
+                background_color: (0.0, 0.0, 0.0, 0.0)
+                text:"g"
+                halign: 'center'
+                valign: 'middle'
+                on_press: root.manager.current = 'screenMenu'
+            Label:
+            Label:
+            Label:
+            Label:
+            Label:
+        #Label Bar
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+                id: username
+                font_name: 'IconFont'
+                background_color: (0.0, 0.0, 0.0, 0.0)
+                text:"f"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: measure1
+                font_name: 'IconFont'
+                background_color: (0.0, 0.0, 0.0, 0.0)
+                text:"a"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: measure2
+                font_name: 'IconFont'
+                background_color: (0.0, 0.0, 0.0, 0.0)
+                text:"b"
+                halign: 'center'
+                valign: 'middle'
+            Button:
+                id: AoB
+                font_name: 'IconFont'
+                color: menubutton_color
+                background_color: (0.0, 0.0, 0.0, 0.0)
+                text:"c"
+                halign: 'center'
+                valign: 'middle'
+                on_press: self.parent.parent.parent.alternateMeasure()
+            Label:
+                id: measure5
+                font_name: 'IconFont'
+                background_color: (0.0, 0.0, 0.0, 0.0)
+                text:"e"
+                halign: 'center'
+                valign: 'middle'
+        #First row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+                id: one_one
+                center_x: root.width / 8
+                top: root.top - root.height * .1
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, .7
+                    Rectangle:
+                        pos: (0,self.center_y - root.height * .04)
+                        size: (root.width,root.height * .085)
+                    
+            Label:
+                id: one_two
+                center_x: 3 * root.width / 8
+                top: root.top - root.height * .1
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: one_three
+                center_x: 5 * root.width / 8
+                top: root.top - root.height * .1
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: one_four
+                center_x: 7 * root.width / 8
+                top: root.top - root.height * .1
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: one_five
+                center_x: 9 * root.width / 8
+                top: root.top - root.height * .1
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+        #Second row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+                id: two_one
+                center_x: root.width / 8
+                top: root.top - root.height * .2
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: two_two
+                center_x: 3 * root.width / 8
+                top: root.top - root.height * .2
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: two_three
+                center_x: 5 * root.width / 8
+                top: root.top - root.height * .2
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: two_four
+                center_x: 7 * root.width / 8
+                top: root.top - root.height * .2
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: two_five
+                center_x: 9 * root.width / 8
+                top: root.top - root.height * .2
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+
+        #Third row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+                id: three_one
+                center_x: root.width / 8
+                top: root.top - root.height * .3
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, .7
+                    Rectangle:
+                        pos: (0,self.center_y - root.height * .04)
+                        size: (root.width,root.height * .085)
+            Label:
+                id: three_two
+                center_x: 3 * root.width / 8
+                top: root.top - root.height * .3
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: three_three
+                center_x: 5 * root.width / 8
+                top: root.top - root.height * .3
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: three_four
+                center_x: 7 * root.width / 8
+                top: root.top - root.height * .3
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: three_five
+                center_x: 9 * root.width / 8
+                top: root.top - root.height * .3
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+
+        #Fourth row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+                id: four_one
+                center_x: root.width / 8
+                top: root.top - root.height * .4
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: four_two
+                center_x: 3 * root.width / 8
+                top: root.top - root.height * .4
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: four_three
+                center_x: 5 * root.width / 8
+                top: root.top - root.height * .4
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: four_four
+                center_x: 7 * root.width / 8
+                top: root.top - root.height * .4
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: four_five
+                center_x: 9 * root.width / 8
+                top: root.top - root.height * .4
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+
+        #Fifth row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+                id: five_one
+                center_x: root.width / 8
+                top: root.top - root.height * .5
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, .7
+                    Rectangle:
+                        pos: (0,self.center_y - root.height * .04)
+                        size: (root.width,root.height * .085)
+            Label:
+                id: five_two
+                center_x: 3 * root.width / 8
+                top: root.top - root.height * .5
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: five_three
+                center_x: 5 * root.width / 8
+                top: root.top - root.height * .5
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: five_four
+                center_x: 7 * root.width / 8
+                top: root.top - root.height * .5
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: five_five
+                center_x: 9 * root.width / 8
+                top: root.top - root.height * .5
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+
+        #Sixth row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+                id: six_one
+                center_x: root.width / 8
+                top: root.top - root.height * .6
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: six_two
+                center_x: 3 * root.width / 8
+                top: root.top - root.height * .6
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: six_three
+                center_x: 5 * root.width / 8
+                top: root.top - root.height * .6
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: six_four
+                center_x: 7 * root.width / 8
+                top: root.top - root.height * .6
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: six_five
+                center_x: 9 * root.width / 8
+                top: root.top - root.height * .6
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+
+        #Seventh row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+                id: seven_one
+                center_x: root.width / 8
+                top: root.top - root.height * .7
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, .7
+                    Rectangle:
+                        pos: (0,self.center_y - root.height * .04)
+                        size: (root.width,root.height * .085)
+            Label:
+                id: seven_two
+                center_x: 3 * root.width / 8
+                top: root.top - root.height * .7
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: seven_three
+                center_x: 5 * root.width / 8
+                top: root.top - root.height * .7
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: seven_four
+                center_x: 7 * root.width / 8
+                top: root.top - root.height * .7
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: seven_five
+                center_x: 9 * root.width / 8
+                top: root.top - root.height * .7
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+
+        #Eight row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+                id: eight_one
+                center_x: root.width / 8
+                top: root.top - root.height * .8
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: eight_two
+                center_x: 3 * root.width / 8
+                top: root.top - root.height * .8
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: eight_three
+                center_x: 5 * root.width / 8
+                top: root.top - root.height * .8
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: eight_four
+                center_x: 7 * root.width / 8
+                top: root.top - root.height * .8
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+            Label:
+                id: eight_five
+                center_x: 9 * root.width / 8
+                top: root.top - root.height * .8
+                text: "-"
+                halign: 'center'
+                valign: 'middle'
+                
+                
+<MenuScreen>:
+    BoxLayout: 
+        orientation:'vertical'
+        padding:0
+        #Top Bar
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Button:
+                id: menu_button
+                font_name: 'IconFont'
+                color: menubutton_color
+                font_size: 30
+                background_color: (0.0, 0.0, 0.0, 0.0)
+                text:"g"
+                halign: 'center'
+                valign: 'middle'
+                on_press: root.manager.current = 'screenMain'
+            Label:
+            Label:
+            Label:
+            Label:
+            Label:
+        #Label Bar
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+            Label:
+            Label:
+            Label:
+            Label:
+        #First row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+            Label:
+            Label:
+            Label:
+            Label:
+        #Second row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+            Label:
+            Label:
+            Label:
+            Label:
+        #Third row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+            Label:
+            Label:
+            Label:
+            Label:
+        #Fourth row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+            Label:
+            Label:
+            Label:
+            Label:
+        #Fifth row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+            Label:
+            Label:
+            Label:
+            Label:
+        #Sixth row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+            Label:
+            Label:
+            Label:
+            Label:
+        #Seventh row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+            Label:
+            Label:
+            Label:
+            Label:
+        #Eight row
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0
+            Label:
+            Label:
+            Label:
+            Label:
+            Label:
