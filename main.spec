@@ -4,8 +4,8 @@ from kivy.deps import sdl2, glew
 block_cipher = None
 
 
-a = Analysis(['..\\paddlebeat\\main.py'],
-             pathex=['C:\\Desarrollo\\kivy\\paddleBeat\\build'],
+a = Analysis(['path\\main.py'],
+             pathex=['path\\build'],
              binaries=None,
              datas=None,
              hiddenimports=[
@@ -59,7 +59,7 @@ def can_exclude(fn):
 a.datas = [x for x in a.datas if not can_exclude(x[0])]
 a.binaries = [x for x in a.binaries if not can_exclude(x[0])]
 # Filter app directory
-appfolder = [x for x in Tree('..\\paddlebeat\\', excludes=['*.py','*.pyc']) if not can_exclude(x[0])]  
+appfolder = [x for x in Tree('path\\', excludes=['*.py','*.pyc']) if not can_exclude(x[0])]  
 
 pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
@@ -67,18 +67,18 @@ pyz = PYZ(a.pure, a.zipped_data,
 exe = EXE(pyz,
           a.scripts,
           exclude_binaries=True,
-          name='paddleBeat',
+          name='your-exe-name',
           debug=False,
           strip=False,
           upx=True,
-          console=True , icon='..\\paddleBeat\\data\\img\\program.ico')
+          console=True , icon='path\\data\\img\\program.ico')
           
 coll = COLLECT(exe, appfolder,
                a.binaries,
                a.zipfiles,
                a.datas,
-               Tree('..\\paddlebeat'),
+               Tree('path'),
                *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins )],
                strip=False,
                upx=True,
-               name='paddleBeat')
+               name='your-exe-name')
